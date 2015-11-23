@@ -1,0 +1,47 @@
+using System;
+
+class TorrentPirate
+{
+    static void Main()
+    {
+        int totalMBToDownload = int.Parse(Console.ReadLine());
+        int price1MovieAtCinema = int.Parse(Console.ReadLine());
+        int wifeMoneyPerHour = int.Parse(Console.ReadLine());
+
+        double priceDownload = ((double)totalMBToDownload / (2 * 60 * 60)) * wifeMoneyPerHour;
+        double priceCinema = ((double)totalMBToDownload / 1500) * price1MovieAtCinema;
+
+        if (priceDownload <= priceCinema)
+        {
+            Console.WriteLine("mall -> {0:f2}lv", priceDownload);
+        }
+        else
+        {
+            Console.WriteLine("cinema -> {0:f2}lv", priceCinema);
+        }
+
+        //More descriptive version:
+        /*
+        int movieSize = 1500;
+        int speedWiFiPerHour = 2 * 60 * 60;
+        int totalMBToDownload = int.Parse(Console.ReadLine());
+        int price1MovieAtCinema = int.Parse(Console.ReadLine());
+        int wifeMoneyPerHour = int.Parse(Console.ReadLine());
+
+        double downloadTime = (double)totalMBToDownload / speedWiFiPerHour;
+        double priceDownload = downloadTime * wifeMoneyPerHour;
+
+        double numberOfMovies = (double)totalMBToDownload / movieSize;
+        double priceCinema = numberOfMovies * price1MovieAtCinema;
+
+        if (priceDownload <= priceCinema)
+        {
+            Console.WriteLine("mall -> {0:f2}lv", priceDownload);
+        }
+        else
+        {
+            Console.WriteLine("cinema -> {0:f2}lv", priceCinema);
+        }
+        */
+    }
+}
