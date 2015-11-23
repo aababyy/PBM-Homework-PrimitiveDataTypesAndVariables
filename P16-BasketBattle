@@ -1,0 +1,106 @@
+using System;
+
+class BasketBattle
+{
+    static void Main()
+    {
+        string f = Console.ReadLine();
+        int n = int.Parse(Console.ReadLine());
+        int resultNakov = 0;
+        int resultSimeon = 0;
+
+        bool isNakovShooting = false;
+        if (f.Equals("Nakov"))
+        {
+            isNakovShooting = true;
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            int p1 = int.Parse(Console.ReadLine());
+            string r1 = Console.ReadLine();
+            
+            if (isNakovShooting)
+            {
+                if (r1.Equals("success") && (resultNakov + p1 <= 500))
+                {
+                    resultNakov += p1;
+                }
+                if (resultNakov == 500)
+                {
+                    Console.WriteLine("Nakov");
+                    Console.WriteLine(i + 1);
+                    Console.WriteLine(resultSimeon);
+                    break;
+                }
+            }
+            else
+            {
+                if (r1.Equals("success") && (resultSimeon + p1 <= 500))
+                {
+                    resultSimeon += p1;
+                }
+                if (resultSimeon == 500)
+                {
+                    Console.WriteLine("Simeon");
+                    Console.WriteLine(i + 1);
+                    Console.WriteLine(resultNakov);
+                    break;
+                }
+            }
+
+            isNakovShooting = !isNakovShooting;
+            
+            int p2 = int.Parse(Console.ReadLine());
+            string r2 = Console.ReadLine();
+
+            if (isNakovShooting)
+            {
+                if (r2.Equals("success") && (resultNakov + p2 <= 500))
+                {
+                    resultNakov += p2;
+                }
+                if (resultNakov == 500)
+                {
+                    Console.WriteLine("Nakov");
+                    Console.WriteLine(i + 1);
+                    Console.WriteLine(resultSimeon);
+                    break;
+                }
+            }
+            else
+            {
+                if (r2.Equals("success") && (resultSimeon + p2 <= 500))
+                {
+                    resultSimeon += p2;
+                }
+                if (resultSimeon == 500)
+                {
+                    Console.WriteLine("Simeon");
+                    Console.WriteLine(i + 1);
+                    Console.WriteLine(resultNakov);
+                    break;
+                }
+            }
+
+            if (i == n - 1)
+            {
+                if (resultNakov == resultSimeon)
+                {
+                    Console.WriteLine("DRAW");
+                    Console.WriteLine(resultNakov);
+                }
+                else if (resultNakov > resultSimeon)
+                {
+                    Console.WriteLine("Nakov");
+                    Console.WriteLine(resultNakov - resultSimeon);
+                }
+                else
+                {
+                    Console.WriteLine("Simeon");
+                    Console.WriteLine(resultSimeon - resultNakov);
+                }
+            }
+        }
+    }
+}
