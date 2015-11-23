@@ -1,0 +1,77 @@
+using System;
+
+class EncryptedMatrix
+{
+    static void Main()
+    {
+        string message = Console.ReadLine();
+        string diagonal = Console.ReadLine();
+        int[] digits = new int[message.Length];
+        string encrypted = "";
+
+        //Take the last digit of the ASCII code of each letter in the message and put it into an array
+        for (int i = 0; i < message.Length; i++)
+        {
+            digits[i] = message[i] % 10;
+        }
+
+        //Calculate the encripted value of each digit and concatenate it to a string
+        for (int i = 0; i < digits.Length; i++)
+        {
+            if (digits[i] % 2 == 0)
+            {
+                encrypted = encrypted + (digits[i] * digits[i]).ToString();
+            }
+            else if (digits.Length == 1)
+            {
+                encrypted = encrypted + digits[i];
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    encrypted = encrypted + (digits[i] + digits[i + 1]).ToString();
+                }
+                else if (i == digits.Length - 1)
+                {
+                    encrypted = encrypted + (digits[i] + digits[i - 1]).ToString();
+                }
+                else
+                {
+                    encrypted = encrypted + (digits[i] + digits[i - 1] + digits[i + 1]).ToString();
+                }
+            }
+        }
+
+        //Print the matrix
+        for (int i = 0; i < encrypted.Length; i++)
+        {
+            for (int j = 0; j < encrypted.Length; j++)
+            {
+                if (diagonal.Equals("\\"))
+                {
+                    if (j == i)
+                    {
+                        Console.Write(encrypted[i] + " ");
+                    }
+                    else
+                    {
+                        Console.Write("0 ");
+                    }
+                }
+                else
+                {
+                    if (j == (encrypted.Length - 1) - i)
+                    {
+                        Console.Write(encrypted[(encrypted.Length - 1) - i] + " ");
+                    }
+                    else
+                    {
+                        Console.Write("0 ");
+                    }
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+}
