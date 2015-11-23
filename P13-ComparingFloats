@@ -1,0 +1,44 @@
+using System;
+
+class ComparingFloats
+{
+    static void Main()
+    {
+
+        double a;
+        double b;
+        double eps = 0.000001;
+        Console.WriteLine("Please, enter the first floating point number to be compared");
+        a = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Please, enter the second floating point number to be compared");
+        b = Convert.ToDouble(Console.ReadLine());
+        double c = a - b;
+        c = Math.Abs(c);
+        if (eps > c)
+        {
+            Console.WriteLine(a + " is equal to " + b + " with precision 0.000001");
+        }
+        else
+        {
+            Console.WriteLine(a + " is not equal to " + b + " with precision 0.000001");
+        }
+
+        //Shorter version:
+        /*
+        Console.WriteLine("Please, enter the first floating point number to be compared");
+        double a = double.Parse(Console.ReadLine());
+        Console.WriteLine("Please, enter the second floating point number to be compared");
+        double b = double.Parse(Console.ReadLine());
+        double c = Math.Abs(a - b);
+        double eps = 0.000001;
+        if (eps > c)
+        {
+            Console.WriteLine(a + " is equal to " + b + " with precision 0.000001");
+        }
+        else
+        {
+            Console.WriteLine(a + " is not equal to " + b + " with precision 0.000001");
+        }
+        */
+    }
+}
