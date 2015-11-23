@@ -1,0 +1,45 @@
+using System;
+
+class Dumbbell
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        int countOut = (n / 2) - 1;
+        int countIn = n / 2;
+        string border = "&";
+        string middle = new String('.', n);
+
+        for (int i = 1; i <= n; i++)
+        {
+            if ((i == 1) || (i == n))
+            {
+                string outside = new String('.', n / 2);
+                string topBottom = new String('&', (n / 2) + 1);
+                Console.WriteLine(outside + topBottom + middle + topBottom + outside);
+            }
+            else if (i == (n / 2) + 1)
+            {
+                string inside = new String('*', n - 2);
+                string center = new String('=', n);
+                Console.WriteLine(border + inside + border + center + border + inside + border);
+            }
+            else
+            {
+                string outside = new String('.', countOut);
+                string inside = new String('*', countIn);
+                Console.WriteLine(outside + border + inside + border + middle + border + inside + border + outside);
+                if (i <= n / 2)
+                {
+                    countOut -= 1;
+                    countIn += 1;
+                }
+                if (i >= n / 2)
+                {
+                    countOut += 1;
+                    countIn -= 1;
+                }
+            }
+        }
+    }
+}
