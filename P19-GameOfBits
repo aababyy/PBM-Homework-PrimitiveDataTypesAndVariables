@@ -1,0 +1,46 @@
+using System;
+
+class GameOfBits
+{
+    static void Main()
+    {
+        uint number = uint.Parse(Console.ReadLine());
+        string bin = Convert.ToString(number, 2);
+        bin = bin.PadLeft(32, '0');
+        string result = "";
+        string command = Console.ReadLine();
+        while (!command.Equals("Game Over!"))
+        {
+            for (int i = 0; i < bin.Length; i++)
+            {
+                if (command.Equals("Odd"))
+                {
+                    if (i % 2 != 0)
+                    {
+                        result = result + bin[i];
+                    }
+                }
+                else
+                {
+                    if (i % 2 == 0)
+                    {
+                        result = result + bin[i];
+                    }
+                }
+            }
+            bin = result;
+            result = "";
+            command = Console.ReadLine();
+        }
+
+        int count = 0;
+        for (int i = 0; i < bin.Length; i++)
+        {
+            if (bin[i] == 49)
+            {
+                count++;
+            }
+        }
+        Console.WriteLine(Convert.ToInt32(bin, 2).ToString() + " -> " + count);
+    }
+}
