@@ -1,0 +1,25 @@
+using System;
+
+class PrintTheASCIITable
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.Unicode;
+        Console.WriteLine("ASCII code\tASCII symbol");
+        for (int i = 0; i < 256; i++)
+        {
+            if (char.IsWhiteSpace((char)i))
+            {
+                Console.WriteLine(i + "\t\tWhite Space");
+            }
+            else if (char.IsControl((char)i))
+            {
+                Console.WriteLine(i + "\t\tControl");
+            }
+            else
+            {
+                Console.WriteLine(i + "\t\t" + (char)i);
+            }
+        }
+    }
+}
